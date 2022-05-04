@@ -17,8 +17,8 @@ import java.util.*
 
 
 class BanManager(
-        private val banFile: File,
-        private val plugin: JavaPlugin
+    private val banFile: File,
+    private val plugin: JavaPlugin
 ) : Listener {
 
     val banList = mutableListOf<String>()

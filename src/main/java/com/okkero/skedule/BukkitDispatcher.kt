@@ -13,27 +13,29 @@ private val bukkitScheduler
 
 
 @OptIn(InternalCoroutinesApi::class)
-class BukkitDispatcher(private val plugin: JavaPlugin, private val async: Boolean = false) : CoroutineDispatcher(), Delay {
+class BukkitDispatcher(private val plugin: JavaPlugin, private val async: Boolean = false) : CoroutineDispatcher(),
+    Delay {
 
     private val runTaskLater: (Plugin, Runnable, Long) -> BukkitTask =
-            if (async)
-                bukkitScheduler::runTaskLaterAsynchronously
-            else
-                bukkitScheduler::runTaskLater
+        if (async)
+            bukkitScheduler::runTaskLaterAsynchronously
+        else
+            bukkitScheduler::runTaskLater
     private val runTask: (Plugin, Runnable) -> BukkitTask =
-            if (async)
-                bukkitScheduler::runTaskAsynchronously
-            else
-                bukkitScheduler::runTask
+        if (async)
+            bukkitScheduler::runTaskAsynchronously
+        else
+            bukkitScheduler::runTask
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun scheduleResumeAfterDelay(timeMillis: Long, continuation: CancellableContinuation<Unit>) {
         val task = runTaskLater(
-                plugin,
-                Runnable {
-                    continuation.apply { resumeUndispatched(Unit) }
-                },
-                timeMillis / 50)
+            plugin,
+            Runnable {
+                continuation.apply { resumeUndispatched(Unit) }
+            },
+            timeMillis / 50
+        )
         continuation.invokeOnCancellation { task.cancel() }
     }
 

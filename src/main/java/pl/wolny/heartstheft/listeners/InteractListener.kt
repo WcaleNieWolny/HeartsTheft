@@ -12,8 +12,8 @@ import pl.wolny.heartstheft.extensions.getSafeAttribute
 import pl.wolny.heartstheft.formatMessage
 
 class InteractListener(
-        private val liveItemNameSpace: NamespacedKey,
-        private val liveTimeToLiveNameSpace: NamespacedKey
+    private val liveItemNameSpace: NamespacedKey,
+    private val liveTimeToLiveNameSpace: NamespacedKey
 ) : Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
@@ -23,7 +23,7 @@ class InteractListener(
         if (item.itemMeta.persistentDataContainer.has(liveItemNameSpace)) {
 
             val ttl = item.itemMeta.persistentDataContainer.get(liveTimeToLiveNameSpace, PersistentDataType.LONG)
-                    ?: return
+                ?: return
 
             if ((ttl > 0) && (System.currentTimeMillis() > ttl)) {
                 player.sendMessage(formatMessage("<red>Te serce wygasło!"))
@@ -45,7 +45,8 @@ class InteractListener(
             player.sendMessage(formatMessage("<red>Nie możesz tyle wpłacić"))
             return false
         }
-        player.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue = player.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue + ammount * 2
+        player.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue =
+            player.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue + ammount * 2
         player.sendMessage(formatMessage("<green>Wpłacono $ammount serca!"))
         return true
     }

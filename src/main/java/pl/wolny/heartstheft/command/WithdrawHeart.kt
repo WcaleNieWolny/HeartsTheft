@@ -31,7 +31,8 @@ class WithdrawHeart(private val itemFactory: ItemFactory) : CommandExecutor {
             sender.sendMessage(formatMessage("<red>Posiadasz za mało miejsca w ekwipunku!"))
             return true
         }
-        sender.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue = sender.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue - toWithdraw * 2
+        sender.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue =
+            sender.getSafeAttribute(Attribute.GENERIC_MAX_HEALTH).baseValue - toWithdraw * 2
         sender.sendMessage(formatMessage("<green>Wypłacono $toWithdraw serc!"))
         return true
     }

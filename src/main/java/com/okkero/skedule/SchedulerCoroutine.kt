@@ -8,8 +8,10 @@ import org.bukkit.scheduler.BukkitScheduler
 import org.bukkit.scheduler.BukkitTask
 import kotlin.coroutines.*
 
-fun Plugin.schedule(initialContext: SynchronizationContext = SYNC,
-                    co: suspend BukkitSchedulerController.() -> Unit): CoroutineTask {
+fun Plugin.schedule(
+    initialContext: SynchronizationContext = SYNC,
+    co: suspend BukkitSchedulerController.() -> Unit
+): CoroutineTask {
     return server.scheduler.schedule(this, initialContext, co)
 }
 
@@ -23,8 +25,10 @@ fun Plugin.schedule(initialContext: SynchronizationContext = SYNC,
  *
  * @see SynchronizationContext
  */
-fun BukkitScheduler.schedule(plugin: Plugin, initialContext: SynchronizationContext = SYNC,
-                             co: suspend BukkitSchedulerController.() -> Unit): CoroutineTask {
+fun BukkitScheduler.schedule(
+    plugin: Plugin, initialContext: SynchronizationContext = SYNC,
+    co: suspend BukkitSchedulerController.() -> Unit
+): CoroutineTask {
     val controller = BukkitSchedulerController(plugin, this)
     val block: suspend BukkitSchedulerController.() -> Unit = {
         try {
@@ -246,9 +250,9 @@ private class NonRepeatingTaskScheduler(val plugin: Plugin, val scheduler: Bukki
 }
 
 private class RepeatingTaskScheduler(
-        val interval: Long,
-        val plugin: Plugin,
-        val scheduler: BukkitScheduler
+    val interval: Long,
+    val plugin: Plugin,
+    val scheduler: BukkitScheduler
 ) : TaskScheduler {
 
     override var currentTask: BukkitTask? = null

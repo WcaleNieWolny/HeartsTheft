@@ -22,7 +22,12 @@ class HeartUnban(private val banManager: BanManager) : CommandExecutor, TabCompl
         return true
     }
 
-    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): List<String> {
+    override fun onTabComplete(
+        sender: CommandSender,
+        command: Command,
+        alias: String,
+        args: Array<out String>
+    ): List<String> {
         return banManager.banList
     }
 }

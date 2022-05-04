@@ -11,8 +11,8 @@ class PlaceBlockListener(private val itemFactory: ItemFactory) : Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     fun onBlockPlaceEvent(event: BlockPlaceEvent) {
         if (
-                event.itemInHand == itemFactory.liveSpawner() ||
-                event.itemInHand == itemFactory.upgradedNetheriteBlock()
+            event.itemInHand == itemFactory.liveSpawner() ||
+            event.itemInHand == itemFactory.upgradedNetheriteBlock()
         ) {
             event.isCancelled = true
         }
