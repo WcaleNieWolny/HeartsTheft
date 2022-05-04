@@ -101,7 +101,7 @@ class ItemFactory(
             displayName(
                 Component.empty().decoration(TextDecoration.ITALIC, false)
                     .append(formatMessage("<#14d746cc>SZTABKA HEFAJSTOSA"))
-            ) //<#14d746cc>
+            )
             addEnchant(Enchantment.THORNS, 1, true)
             addItemFlags(ItemFlag.HIDE_ENCHANTS)
         }
@@ -122,7 +122,7 @@ class ItemFactory(
             displayName(
                 Component.empty().decoration(TextDecoration.ITALIC, false)
                     .append(formatMessage("<#14d746cc>BLOK HEFAJSTOSA"))
-            ) //<#14d746cc>
+            )
             addEnchant(Enchantment.THORNS, 1, true)
             addItemFlags(ItemFlag.HIDE_ENCHANTS)
         }
@@ -143,7 +143,7 @@ class ItemFactory(
             displayName(
                 Component.empty().decoration(TextDecoration.ITALIC, false)
                     .append(formatMessage("<#E63C96>SKRZYDŁA HERMERSA"))
-            ) //<#14d746cc>
+            )
 
             isUnbreakable = true
             addEnchant(Enchantment.THORNS, 5, true)
