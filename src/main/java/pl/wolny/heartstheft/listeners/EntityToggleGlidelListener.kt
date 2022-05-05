@@ -10,7 +10,7 @@ import pl.wolny.heartstheft.item.ItemFactory
 class EntityToggleGlidelListener(private val itemFactory: ItemFactory) : Listener {
 
     @EventHandler
-    fun onEntityToggleGlideEvent(event: EntityToggleGlideEvent) {
+    private fun onEntityToggleGlideEvent(event: EntityToggleGlideEvent) {
         val player = event.entity
 
         if (player !is Player) {

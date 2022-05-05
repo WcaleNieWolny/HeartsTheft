@@ -9,7 +9,7 @@ import pl.wolny.heartstheft.item.ItemFactory
 class PlaceBlockListener(private val itemFactory: ItemFactory) : Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
-    fun onBlockPlaceEvent(event: BlockPlaceEvent) {
+    private fun onBlockPlaceEvent(event: BlockPlaceEvent) {
         if (
             event.itemInHand == itemFactory.liveSpawner() ||
             event.itemInHand == itemFactory.upgradedNetheriteBlock()

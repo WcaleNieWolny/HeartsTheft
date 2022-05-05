@@ -11,7 +11,7 @@ import pl.wolny.heartstheft.item.ItemFactory
 class PrepareSmithingListener(private val itemFactory: ItemFactory) : Listener {
 
     @EventHandler(priority = EventPriority.NORMAL)
-    fun onPrepareSmithingEvent(event: PrepareSmithingEvent) {
+    private fun onPrepareSmithingEvent(event: PrepareSmithingEvent) {
         val material = event.inventory.inputMineral ?: return
         if (material != itemFactory.upgradedNetherite()) {
             event.result = ItemStack(Material.AIR)

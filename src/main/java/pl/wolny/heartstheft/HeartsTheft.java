@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.wolny.heartstheft.ban.BanManager;
 import pl.wolny.heartstheft.command.HeartUnban;
 import pl.wolny.heartstheft.command.WithdrawHeart;
+import pl.wolny.heartstheft.hook.CombatLogHook;
 import pl.wolny.heartstheft.item.ItemFactory;
 import pl.wolny.heartstheft.item.crafting.*;
 import pl.wolny.heartstheft.listeners.*;
@@ -37,6 +38,8 @@ public class HeartsTheft extends JavaPlugin {
 
         PluginManager manager = Bukkit.getPluginManager();
         banManager.init();
+
+        new CombatLogHook(this).register();
 
         manager.registerEvents(new DeathListener(itemFactory, banManager), this);
         manager.registerEvents(new CraftListener(noCraftingNameSpace, itemFactory), this);

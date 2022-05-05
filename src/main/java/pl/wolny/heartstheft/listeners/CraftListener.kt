@@ -15,7 +15,7 @@ class CraftListener(private val namespacedKey: NamespacedKey, private val itemFa
     private var air = ItemStack(Material.AIR)
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
-    fun onCraftEvent(event: PrepareItemCraftEvent) {
+    private fun onCraftEvent(event: PrepareItemCraftEvent) {
         val matrix = event.inventory.matrix
         if (matrix?.any { it != null && it.itemMeta.persistentDataContainer.has(namespacedKey) } == true) {
             if (event.inventory.result?.equals(itemFactory.liveSpawner()) == true) {

@@ -17,7 +17,7 @@ class InteractListener(
 ) : Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.NORMAL)
-    fun onInteractEvent(event: PlayerInteractEvent) {
+    private fun onInteractEvent(event: PlayerInteractEvent) {
         val item = event.item ?: return
         val player = event.player
         if (item.itemMeta.persistentDataContainer.has(liveItemNameSpace)) {

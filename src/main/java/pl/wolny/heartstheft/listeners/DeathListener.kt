@@ -16,7 +16,7 @@ import pl.wolny.heartstheft.item.ItemFactory
 class DeathListener(private val itemFactory: ItemFactory, private val banManager: BanManager) : Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    fun onDeathEvent(event: PlayerDeathEvent) {
+    private fun onDeathEvent(event: PlayerDeathEvent) {
         val player = event.player
         val lastDamage = player.lastDamageCause ?: return
 
